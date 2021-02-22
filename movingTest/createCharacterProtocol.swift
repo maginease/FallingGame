@@ -24,8 +24,6 @@ extension createCharacter {
     func levitateAndRemove (xSpeed: Bool) -> SKAction {
         
         
-        
-       
         if xSpeed == true {
             
            
