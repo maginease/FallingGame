@@ -14,15 +14,15 @@ import SpriteKit
 struct category {
     
     static let mainCharacterCategory:UInt32 = 0x1 << 0
-    
+    // 1
     static let hostileCloudCategory:UInt32 = 0x1 << 1
-    
+    //2
     static let backgroundCategory:UInt32 = 0x1 << 2
-    
+    //4
     static let healthrestore:UInt32 = 0x1 << 3
-    
+    //8
     static let bombCategory:UInt32 = 0x1 << 4
-    
+    //16
     
     
 }
@@ -85,9 +85,9 @@ extension GameScene {
         mainCharacter.physicsBody?.restitution = 0
         mainCharacter.physicsBody?.allowsRotation = false
         mainCharacter.name = "mainCharacter"
-        mainCharacter.physicsBody!.collisionBitMask = category.hostileCloudCategory
+        
         mainCharacter.physicsBody!.categoryBitMask = category.mainCharacterCategory
-        mainCharacter.physicsBody!.contactTestBitMask = category.hostileCloudCategory
+        mainCharacter.physicsBody!.contactTestBitMask = category.hostileCloudCategory | category.healthrestore
         addChild(mainCharacter)
     }
     
@@ -110,6 +110,8 @@ extension GameScene {
         score = 0
         
         createScoreDisplay()
+        
+        createHighScoreDisplay()
     }
     
     
@@ -275,6 +277,18 @@ extension GameScene {
         addChild(scoreDisplay)
         
     }
+    
+    func createHighScoreDisplay() {
+        
+        highScoreDisplay.fontColor = SKColor.black
+        highScoreDisplay.fontSize = 15
+        highScoreDisplay.position = CGPoint(x: self.frame.width * 3 / 5, y: self.frame.height * 15 / 16)
+        highScoreDisplay.text = "high score: \(highScore)"
+        addChild(highScoreDisplay)
+    }
+    
+    
+    
     
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-protocol createCharacter:SKScene {
+protocol createCharacterScene: SKScene {
     
     var timeToGoUp:Int { get }
     
@@ -17,10 +17,13 @@ protocol createCharacter:SKScene {
 }
 
 
-extension createCharacter {
+extension createCharacterScene {
     
     
-   
+    
+    ///  it levitates the node to the top of the screen and removing them
+    /// - Parameter xSpeed: whether the node should have x velocity
+    /// - Returns: sequence SKAction that executes these actions
     func levitateAndRemove (xSpeed: Bool) -> SKAction {
         
         

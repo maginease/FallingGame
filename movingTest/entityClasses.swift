@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 
-class hostileCloud: SKScene, createCharacter {
+class hostileCloud: SKScene, createCharacterScene {
    
   
     var timeToGoUp = 3
@@ -39,7 +39,6 @@ class hostileCloud: SKScene, createCharacter {
     Entity.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.width / 20, height: self.frame.height / 40))
     
     Entity.physicsBody?.contactTestBitMask = category.mainCharacterCategory
-    Entity.physicsBody?.collisionBitMask = category.mainCharacterCategory
     Entity.physicsBody?.categoryBitMask = category.hostileCloudCategory
     
 
@@ -60,7 +59,7 @@ class hostileCloud: SKScene, createCharacter {
 }
     
 
-class cloud: SKScene, createCharacter {
+class cloud: SKScene, createCharacterScene {
         
         var timeToGoUp = 10
         
@@ -82,7 +81,7 @@ class cloud: SKScene, createCharacter {
    }
    
 
-class bomb:SKScene, createCharacter {
+class bomb:SKScene, createCharacterScene {
     
     var timeToGoUp = 4
     
@@ -110,9 +109,14 @@ class bomb:SKScene, createCharacter {
         return bomb
     }
     
+    var childBomb = SKSpriteNode(imageNamed: "bomb")
+    
+   
+    
+    
 }
 
-class healthBottle: SKScene, createCharacter {
+class healthBottle: SKScene, createCharacterScene {
     
     var timeToGoUp = 4
     
@@ -141,7 +145,7 @@ class healthBottle: SKScene, createCharacter {
         
         healthRegnerator.physicsBody?.categoryBitMask = category.healthrestore
         healthRegnerator.physicsBody?.contactTestBitMask = category.mainCharacterCategory
-        healthRegnerator.physicsBody?.collisionBitMask = category.mainCharacterCategory
+        
         healthRegnerator.zPosition = 1
         
         
