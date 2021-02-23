@@ -231,9 +231,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if totalHealth <= 0 {
 
               reset()
-                
-                
-
 
             }
 
@@ -245,27 +242,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            
             totalHealth -= 1000
             
+            
+            
+            
             removeAllChildren()
             
+            let delay = SKAction.wait(forDuration: 2)
+            
+           
             createHpBar()
             createScoreDisplay()
             createHighScoreDisplay()
-            
-            mainCharacter.position = currentPosition
-            
             addChild(mainCharacter)
             
             
+            mainCharacter.position = currentPosition
             
             
             
             
             boom.position = positionOfBomb
-            boom.size = CGSize(width: self.frame.width / 3, height: self.frame.height / 5)
+            boom.size = CGSize(width: self.frame.width , height: self.frame.height / 2)
             
            
             func addBoom() {
+                
+                boom.run(SKAction.resize(byWidth: self.frame.width, height: self.frame.height, duration: 2))
                 addChild(boom)
+                
             }
             
             func removeBoom() {
@@ -274,17 +278,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
            
             let appendBoom = SKAction.run(addBoom)
-            let delayBoom = SKAction.wait(forDuration: 2)
             let terminateBoom = SKAction.run(removeBoom)
-            let arrayActionBoom = SKAction.sequence([appendBoom,delayBoom,terminateBoom])
+            let arrayActionBoom = SKAction.sequence([appendBoom,delay,terminateBoom])
             self.run(arrayActionBoom)
+            
+            
+            if totalHealth <= 0 {
+
+              reset()
+
+            }
+            
             
         }
         let HealthRestore = childNode(withName: "healthrestore")
         
         if (node1.name == "mainCharacter" && node2.name == "healthrestore") || (node1.name == "healthrestore" && node2.name == "mainCharacter") {
             
-            totalHealth += 2000
+            if totalHealth <= 8000 && totalHealth > 0 {
+            
+                totalHealth += 2000
+            }
+            
+            
+            
             hp.text = "Health:\(totalHealth)"
             
             removeChildren(in: [HealthRestore!])

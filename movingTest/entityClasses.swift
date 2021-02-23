@@ -95,7 +95,7 @@ class bomb:SKScene, createCharacterScene {
         
         bomb.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width/10, height: self.frame.size.height/30))
         bomb.size = CGSize(width: self.frame.width / 2, height: self.frame.height * 3 / 5)
-        bomb.position = CGPoint(x: Int.random(in: 0...Int(self.frame.size.width)), y: 1)
+        bomb.position = CGPoint(x: Int.random(in: 0...(Int(self.frame.size.width)) - Int(bomb.size.width)), y: 1)
         bomb.physicsBody?.allowsRotation = false
         bomb.physicsBody?.restitution = 0
         bomb.zPosition = 1
