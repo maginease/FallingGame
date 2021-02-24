@@ -10,7 +10,7 @@ import GameplayKit
 
 var positionOfBomb = CGPoint(x: 0, y: 0)
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
     
     let mainCharacter = SKSpriteNode(imageNamed:"falling")
     let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
@@ -50,92 +50,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         currentPosition = mainCharacter.position
         
-        
-
-//        let spawnH = SKAction.run(createHostileCloud)
-//        let delayH = SKAction.wait(forDuration: 0.5)
-//        let actionSeqH = SKAction.sequence([spawnH,delayH])
-//        let repeatingHostileCloudProduction = SKAction.repeatForever(actionSeqH)
-//        self.run(repeatingHostileCloudProduction)
-        
-        
-//
-//        let spawnC = SKAction.run(createCloud)
-//        let delayC = SKAction.wait(forDuration: 3)
-//        let actionSeqC = SKAction.sequence([spawnC,delayC])
-//        let repeatingBackgroundCloudProduction = SKAction.repeatForever(actionSeqC)
-//        self.run(repeatingBackgroundCloudProduction)
-//        
-        
-        
-        
-//        let SpawnHe = SKAction.run(createHealthRecovery)
-//        let delayHe = SKAction.wait(forDuration: 5)
-//        let actionSeqHe = SKAction.sequence([SpawnHe,delayHe])
-//        let repeatingHealthBottleProduction = SKAction.repeatForever(actionSeqHe)
-//        self.run(repeatingHealthBottleProduction)
-
-//        let spawnB = SKAction.run(createBomb)
-//        let delay = SKAction.wait(forDuration: 15)
-//        let actionSeqB = SKAction.sequence([spawnB,delay])
-//        let repeatingBombProduction = SKAction.repeatForever(actionSeqB)
-//        self.run(repeatingBombProduction)
-
-        let Bomb = bomb(size: CGSize(width: self.frame.width, height: self.frame.height))
-        
-        func addBomb() {
-            addChild(Bomb.createBomb())
-        }
-        
-        let spawnBomb = SKAction.run(addBomb)
-        let delayBomb = SKAction.wait(forDuration: 50)
-        let sequenceBomb = SKAction.sequence([spawnBomb,delayBomb])
-        let repeatingBombProduction = SKAction.repeatForever(sequenceBomb)
-        self.run(repeatingBombProduction)
-        
-        
-        
-        
-        let hostilecloud = hostileCloud(size: CGSize(width: self.frame.width, height: self.frame.height))
-
-        func addHostile() {
-            addChild(hostilecloud.createHostileCloud())
-        }
-
-        let spawnH = SKAction.run(addHostile)
-        let delayH = SKAction.wait(forDuration: 0.5)
-        let sequenceH = SKAction.sequence([spawnH,delayH])
-        let repeatingHostileCloudProduction = SKAction.repeatForever(sequenceH)
-        self.run(repeatingHostileCloudProduction)
-        
-        
-        
 
         
-        let healthbottle = healthBottle(size: CGSize(width: self.frame.width, height: self.frame.height))
+
+        let createBombForever = SKAction.run(Bomb)
+        self.run(createBombForever)
+        //creates Bomb
         
-        func addBottle() {
-            addChild(healthbottle.createHealthBottle())
-        }
+
+        let createHostileCloudForever = SKAction.run(HostileCloud)
+        self.run(createHostileCloudForever)
+        // creates thunder cloud
+
         
-        let spawnHealth = SKAction.run(addBottle)
-        let delayHealth = SKAction.wait(forDuration: 5)
-        let sequenceHealth = SKAction.sequence([spawnHealth,delayHealth])
-        let repeatingHelathBottleReproduction = SKAction.repeatForever(sequenceHealth)
-        self.run(repeatingHelathBottleReproduction)
-       
+        let createHealthBottleForever = SKAction.run(HealthBottle)
+        self.run(createHealthBottleForever)
+       //creates health bottle
         
-    
-        let Cloud = cloud(size: CGSize(width: self.frame.width, height: self.frame.height))
-        func addCloud() {
-            addChild(Cloud.createCloud())
-        }
-        
-        let spawnCloud = SKAction.run(addCloud)
-        let delayCloud = SKAction.wait(forDuration: 3)
-        let sequenceCloud = SKAction.sequence([spawnCloud,delayCloud])
-        let repeatingCloudProduction = SKAction.repeatForever(sequenceCloud)
-        self.run(repeatingCloudProduction)
+        let createCloudForever = SKAction.run(Cloud)
+        self.run(createCloudForever)
+       // creates cloud
     }
     
     
