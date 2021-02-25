@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C5ADDD325BEA8FB0017D9AE /* gameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5ADDD225BEA8FB0017D9AE /* gameElements.swift */; };
-		6C81204D25E5F4E900B58484 /* createCharactersNonStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C81204C25E5F4E900B58484 /* createCharactersNonStop.swift */; };
+		6C81204D25E5F4E900B58484 /* createCharactersFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C81204C25E5F4E900B58484 /* createCharactersFunctions.swift */; };
 		6C8692F325DCF78800E5A684 /* entityClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8692F225DCF78800E5A684 /* entityClasses.swift */; };
 		6C977CF825C3EC4B006032CC /* toUpper.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C977CF725C3EC4B006032CC /* toUpper.c */; };
 		6C97DC2125B936CB005FDF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C97DC2025B936CB005FDF81 /* AppDelegate.swift */; };
@@ -42,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		6C5ADDD225BEA8FB0017D9AE /* gameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameElements.swift; sourceTree = "<group>"; };
-		6C81204C25E5F4E900B58484 /* createCharactersNonStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createCharactersNonStop.swift; sourceTree = "<group>"; };
+		6C81204C25E5F4E900B58484 /* createCharactersFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createCharactersFunctions.swift; sourceTree = "<group>"; };
 		6C8692F225DCF78800E5A684 /* entityClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = entityClasses.swift; sourceTree = "<group>"; };
 		6C977CF525C3EC4B006032CC /* movingTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "movingTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C977CF625C3EC4B006032CC /* toUpper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = toUpper.h; sourceTree = "<group>"; };
@@ -117,10 +117,10 @@
 				6C97DC2225B936CB005FDF81 /* GameScene.sks */,
 				6C97DC2425B936CB005FDF81 /* Actions.sks */,
 				6C97DC2625B936CB005FDF81 /* GameScene.swift */,
-				6CC7322225D02CCF0033BA7F /* createCharacterProtocol.swift */,
-				6C81204C25E5F4E900B58484 /* createCharactersNonStop.swift */,
+				6C81204C25E5F4E900B58484 /* createCharactersFunctions.swift */,
 				6C8692F225DCF78800E5A684 /* entityClasses.swift */,
 				6C5ADDD225BEA8FB0017D9AE /* gameElements.swift */,
+				6CC7322225D02CCF0033BA7F /* createCharacterProtocol.swift */,
 				6C97DC2825B936CB005FDF81 /* GameViewController.swift */,
 				6C97DC2A25B936CB005FDF81 /* Main.storyboard */,
 				6C97DC2D25B936CD005FDF81 /* Assets.xcassets */,
@@ -285,7 +285,7 @@
 				6C977CF825C3EC4B006032CC /* toUpper.c in Sources */,
 				6C5ADDD325BEA8FB0017D9AE /* gameElements.swift in Sources */,
 				6C97DC2725B936CB005FDF81 /* GameScene.swift in Sources */,
-				6C81204D25E5F4E900B58484 /* createCharactersNonStop.swift in Sources */,
+				6C81204D25E5F4E900B58484 /* createCharactersFunctions.swift in Sources */,
 				6CC7322325D02CCF0033BA7F /* createCharacterProtocol.swift in Sources */,
 				6C97DC2925B936CB005FDF81 /* GameViewController.swift in Sources */,
 				6C97DC2125B936CB005FDF81 /* AppDelegate.swift in Sources */,

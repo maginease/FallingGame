@@ -155,7 +155,70 @@ class healthBottle: SKScene, createCharacterScene {
     }
 }
 
+class startingButton:SKScene {
+    
+    
+    
+    
+    override init(size: CGSize) {
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func createButton()-> SKNode {
+        
+        let button = SKShapeNode(rectOf: CGSize(width: self.frame.size.width / 2, height: self.frame.size.height / 5))
+        let text = SKLabelNode(text: "start")
+
+        button.fillColor = SKColor.purple
+        text.zPosition = 1
+        text.fontSize = 20
+        text.fontColor = SKColor.black
+        button.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        button.name = "startButton"
+        button.addChild(text)
+       
+        return button
+        
+    }
+    
+}
 
 
+class restartButton:SKScene {
+    
+    
+    override init(size:CGSize) {
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func createRestartButton() ->SKNode {
+        
+        let RestartButton = SKShapeNode(rectOf: CGSize(width: self.frame.width / 2, height: self.frame.height / 2))
+        RestartButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        RestartButton.fillColor = SKColor.purple
+        RestartButton.zPosition = 0
+        RestartButton.name = "restartButton"
+        
+        let text = SKLabelNode()
+        text.zPosition = 1
+        text.text = "Restart"
+        text.fontColor = SKColor.black
+        text.fontSize = 20
+        RestartButton.addChild(text)
+        
+
+        return RestartButton
+        
+    }
+    
+}
 
 

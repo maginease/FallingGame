@@ -9,14 +9,15 @@ import SpriteKit
 import GameplayKit
 
 var positionOfBomb = CGPoint(x: 0, y: 0)
+var isDead = false
 
-class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
+class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     
     let mainCharacter = SKSpriteNode(imageNamed:"falling")
     let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
     var thunderCloud = SKSpriteNode()
     let boom = SKSpriteNode(imageNamed: "Boom")
-    
+ 
     
     
     let scoreDisplay = SKLabelNode()
@@ -24,11 +25,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
     var totalHealth = 10_000
     let hp = SKLabelNode()
     var died: Bool = false
-    let restartButton = SKShapeNode()
     var currentPosition = CGPoint(x: 0, y: 0)
     let highScoreDisplay = SKLabelNode()
     var highScore = 0
     var positionOfBomb = CGPoint(x: 0, y: 0)
+    
+    
+    
     
     override func didMove(to view: SKView) {
       //didMove function directly affects user interface, the screen you see.
@@ -37,9 +40,86 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
         physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        // sets gravity to 0
+        
         
         createBackground()
        
+        
+        currentPosition = mainCharacter.position
+        
+        let createStartButton = SKAction.run(StartButton)
+        self.run(createStartButton)
+        
+       
+    }
+    
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let startButton = childNode(withName: "startButton")
+        
+        guard let StartButton = startButton else { return }
+        
+        
+        
+        for touchStart in touches {
+            
+            let location = touchStart.location(in: self)
+            
+            if StartButton.contains(location) {
+                
+                runActions()
+                
+                removeChildren(in: [StartButton])
+            
+            }
+            
+        
+        }
+        
+        
+        let restartButton = childNode(withName: "restartButton")
+        
+        guard let RestartButton = restartButton else { return }
+        
+        for touchRename in touches {
+            
+            let location = touchRename.location(in: self)
+            
+            if RestartButton.contains(location) {
+                
+                removeChildren(in: [RestartButton])
+                
+                isDead = false
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    func runActions() {
+        
+            let createBombForever = SKAction.run(Bomb)
+        self.run(createBombForever)
+        //creates Bomb on screen
+        
+
+        let createHostileCloudForever = SKAction.run(HostileCloud)
+        self.run(createHostileCloudForever)
+        // creates thunder cloud on screen
+
+        
+        let createHealthBottleForever = SKAction.run(HealthBottle)
+        self.run(createHealthBottleForever)
+       //creates health bottle on screen
+        
+        let createCloudForever = SKAction.run(Cloud)
+        self.run(createCloudForever)
+       // creates cloud on screen
+        
         createScoreDisplay()
      
         createMainCharacter()
@@ -48,31 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
         
         createHighScoreDisplay()
         
-        currentPosition = mainCharacter.position
-        
-
-        
-
-        let createBombForever = SKAction.run(Bomb)
-        self.run(createBombForever)
-        //creates Bomb
-        
-
-        let createHostileCloudForever = SKAction.run(HostileCloud)
-        self.run(createHostileCloudForever)
-        // creates thunder cloud
-
-        
-        let createHealthBottleForever = SKAction.run(HealthBottle)
-        self.run(createHealthBottleForever)
-       //creates health bottle
-        
-        let createCloudForever = SKAction.run(Cloud)
-        self.run(createCloudForever)
-       // creates cloud
     }
-    
-    
     
     private func c_lang_test() {
         
@@ -97,7 +153,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
     }
     
     
-    
    
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -115,13 +170,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
             
         }
         
-        if touches as NSObject == restartButton {
-           
-            reset()
-            
-        }
        
     }
+    
+   
     
     func didBegin(_ contact: SKPhysicsContact) {
         
@@ -131,7 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
         
         
         
-        let HostileCloud = childNode(withName: "hostileCloud")
+        let HostileCloudNode = childNode(withName: "hostileCloud")
         
         if (node1.name == "mainCharacter" && node2.name == "hostileCloud") || (node1.name == "hostileCloud" && node2.name == "mainCharacter") {
 
@@ -157,14 +209,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
 
             hp.text = "Health:\(totalHealth)"
 
-            removeChildren(in: [HostileCloud!])
+            removeChildren(in: [HostileCloudNode!])
 
 
 
 
             if totalHealth <= 0 {
 
-              reset()
+                reset()
+                isDead = true
 
             }
 
@@ -181,16 +234,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
             
             removeAllChildren()
             
+            createHpBar()
+            
+            addChild(mainCharacter)
+            
+            createScoreDisplay()
+            
+            createHighScoreDisplay()
+            
             let delay = SKAction.wait(forDuration: 2)
             
            
-            createHpBar()
-            createScoreDisplay()
-            createHighScoreDisplay()
-            addChild(mainCharacter)
-            
-            
-            mainCharacter.position = currentPosition
+           mainCharacter.position = currentPosition
             
             
             
@@ -209,19 +264,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
             func removeBoom() {
                 removeChildren(in: [boom])
             }
+
+          
             
-           
             let appendBoom = SKAction.run(addBoom)
             let terminateBoom = SKAction.run(removeBoom)
             let arrayActionBoom = SKAction.sequence([appendBoom,delay,terminateBoom])
             self.run(arrayActionBoom)
             
-            
+          
             if totalHealth <= 0 {
 
-              reset()
+                reset()
+                isDead = true
 
             }
+
             
             
         }
@@ -231,7 +289,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersNonStop {
             
             if totalHealth <= 8000 && totalHealth > 0 {
             
-                totalHealth += 2000
+               totalHealth += 2000
+            
+            } else if totalHealth == 9000 {
+                
+                totalHealth += 1000
             }
             
             

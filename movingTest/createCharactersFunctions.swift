@@ -8,9 +8,9 @@
 import Foundation
 import SpriteKit
 
-protocol createCharactersNonStop:SKScene {}
+protocol createCharactersFunctions:SKScene {}
 
-extension createCharactersNonStop {
+extension createCharactersFunctions {
     
     func HostileCloud() {
         
@@ -34,13 +34,15 @@ extension createCharactersNonStop {
         func addCloud() {
             addChild(Cloud.createCloud())
         }
+       
         
-        let spawnCloud = SKAction.run(addCloud)
-        let delayCloud = SKAction.wait(forDuration: 3)
-        let sequenceCloud = SKAction.sequence([spawnCloud,delayCloud])
-        let repeatingCloudProduction = SKAction.repeatForever(sequenceCloud)
-        self.run(repeatingCloudProduction)
-    
+            let spawnCloud = SKAction.run(addCloud)
+            let delayCloud = SKAction.wait(forDuration: 3)
+            let sequenceCloud = SKAction.sequence([spawnCloud,delayCloud])
+            let repeatingCloudProduction = SKAction.repeatForever(sequenceCloud)
+            self.run(repeatingCloudProduction)
+       
+        
     }
     
     func Bomb() {
@@ -72,6 +74,24 @@ extension createCharactersNonStop {
         let sequenceHealth = SKAction.sequence([spawnHealth,delayHealth])
         let repeatingHelathBottleReproduction = SKAction.repeatForever(sequenceHealth)
         self.run(repeatingHelathBottleReproduction)
+        
+    }
+    
+    func StartButton() {
+        
+        let StartingButton = startingButton(size: CGSize(width: self.frame.width, height: self.frame.height))
+        func startButtonCreate() { addChild(StartingButton.createButton()) }
+        let creatingStart = SKAction.run(startButtonCreate)
+        self.run(creatingStart)
+        
+    }
+    
+    func RestartButton() {
+        
+        let RestartButton = restartButton(size: CGSize(width: self.frame.width, height: self.frame.height))
+        func addRestartButton() { addChild(RestartButton.createRestartButton()) }
+        let AddRestart = SKAction.run(addRestartButton)
+        self.run(AddRestart)
         
     }
     
