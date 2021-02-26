@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 var positionOfBomb = CGPoint(x: 0, y: 0)
-var isDead = false
+var paused = false
 
 class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     
@@ -91,7 +91,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
                 
                 removeChildren(in: [RestartButton])
                 
-                isDead = false
+                isPaused = false
+                
+                runActions()
             }
             
         }
@@ -205,7 +207,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
 
 
 
-            totalHealth -= 1000
+            totalHealth -= 5000
 
             hp.text = "Health:\(totalHealth)"
 
@@ -215,9 +217,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
 
 
             if totalHealth <= 0 {
-
+                
+                pauseCharacters()
+                
                 reset()
-                isDead = true
+                
+               
+                
+               
 
             }
 
@@ -227,7 +234,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         
         if (node1.name == "mainCharacter" && node2.name == "bomb") || (node1.name == "bomb" && node2.name == "mainCharacter") {
            
-            totalHealth -= 1000
+            totalHealth -= 5000
             
             
             
@@ -276,7 +283,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
             if totalHealth <= 0 {
 
                 reset()
-                isDead = true
+                died = true
 
             }
 

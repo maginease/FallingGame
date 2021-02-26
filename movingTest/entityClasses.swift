@@ -48,13 +48,16 @@ class hostileCloud: SKScene, createCharacterScene {
         Entity.physicsBody?.restitution = 0
         Entity.zRotation = 0
 
-
+    if paused == false {
         Entity.run(levitateAndRemove(xSpeed: false))
 
     return Entity
       
-      }
-
+    }
+    let EmptyNode = SKSpriteNode()
+    
+    return EmptyNode
+   }
     
 }
     
@@ -73,12 +76,19 @@ class cloud: SKScene, createCharacterScene {
             
             Entity.position = CGPoint(x: Int.random(in: 0...Int(self.frame.size.width)), y: -1)
             Entity.size = CGSize(width: self.frame.width/2, height: self.frame.size.height/5)
-
-            Entity.run(levitateAndRemove(xSpeed: false))
+           
+            if paused == false {
+            
+                Entity.run(levitateAndRemove(xSpeed: false))
             
             return Entity
         }
-   }
+            let EmptyNode = SKSpriteNode()
+            
+            return EmptyNode
+        }
+  
+}
    
 
 class bomb:SKScene, createCharacterScene {
@@ -104,12 +114,18 @@ class bomb:SKScene, createCharacterScene {
         bomb.physicsBody?.contactTestBitMask = category.mainCharacterCategory
         bomb.physicsBody?.categoryBitMask = category.bombCategory
         
-        bomb.run(levitateAndRemove(xSpeed: false))
+        if paused == false {
+        
+            bomb.run(levitateAndRemove(xSpeed: false))
         
         return bomb
     }
+        
+        let EmptyNode = SKSpriteNode()
+        
+        return EmptyNode
+    }
     
-    var childBomb = SKSpriteNode(imageNamed: "bomb")
     
    
     
@@ -148,10 +164,15 @@ class healthBottle: SKScene, createCharacterScene {
         
         healthRegnerator.zPosition = 1
         
+        if paused == false {
         
         healthRegnerator.run(levitateAndRemove(xSpeed: true))
         
         return healthRegnerator
+    }
+        let EmptyNode = SKSpriteNode()
+        
+        return EmptyNode
     }
 }
 
@@ -201,7 +222,7 @@ class restartButton:SKScene {
     
     func createRestartButton() ->SKNode {
         
-        let RestartButton = SKShapeNode(rectOf: CGSize(width: self.frame.width / 2, height: self.frame.height / 2))
+        let RestartButton = SKShapeNode(rectOf: CGSize(width: self.frame.width / 2, height: self.frame.height / 8))
         RestartButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
         RestartButton.fillColor = SKColor.purple
         RestartButton.zPosition = 0
