@@ -24,7 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     var score = 0
     var totalHealth = 10_000
     let hp = SKLabelNode()
-    var died: Bool = false
+   
     var currentPosition = CGPoint(x: 0, y: 0)
     let highScoreDisplay = SKLabelNode()
     var highScore = 0
@@ -80,22 +80,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         
         
         let restartButton = childNode(withName: "restartButton")
-        
+
         guard let RestartButton = restartButton else { return }
-        
-        for touchRename in touches {
-            
-            let location = touchRename.location(in: self)
-            
+
+        for touchRestart in touches {
+
+            let location = touchRestart.location(in: self)
+
             if RestartButton.contains(location) {
-                
+
                 removeChildren(in: [RestartButton])
-                
+
                 isPaused = false
-                
+
                 runActions()
             }
-            
+
         }
         
     }
@@ -189,7 +189,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         
         if (node1.name == "mainCharacter" && node2.name == "hostileCloud") || (node1.name == "hostileCloud" && node2.name == "mainCharacter") {
 
-          func removeelectrocuted() {
+            let damageGiven = 1000
+            
+            totalHealth -= damageGiven
+            
+            hp.text = "Health:\(totalHealth)"
+            
+            if totalHealth - damageGiven > 0 {
+          
+                func removeelectrocuted() {
                 removeChildren(in: [electrocuted])
             }
 
@@ -204,29 +212,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
 
             self.run(actionSequence)
 
+            } else {
+                
+                reset()
+                
+                paused = true
+            }
 
 
+            
 
-            totalHealth -= 5000
-
-            hp.text = "Health:\(totalHealth)"
+           
 
             removeChildren(in: [HostileCloudNode!])
 
 
 
 
-            if totalHealth <= 0 {
-                
-                pauseCharacters()
-                
-                reset()
-                
-               
-                
-               
-
-            }
+         
 
         }
         
@@ -282,8 +285,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
           
             if totalHealth <= 0 {
 
+                paused = true
+                
+                removemainCharacter()
+                
                 reset()
-                died = true
+                
 
             }
 

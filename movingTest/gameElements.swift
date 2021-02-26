@@ -152,27 +152,7 @@ extension GameScene {
         addChild(highScoreDisplay)
     }
     
-    func pauseCharacters() {
-        
-//        let thunderCloud = childNode(withName: "thundercloud-hostile")
-//        let Cloud = childNode(withName: "cloud")
-//        let HealthBottle = childNode(withName: "healthrestore")
-//        let Bomb = childNode(withName: "bomb")
-//
-//        guard let hostileCloud = thunderCloud else { return }
-//        guard let cloud = Cloud else { return }
-//        guard let healthBottle = HealthBottle else { return }
-//        guard let bomb = Bomb else { return }
-//
-//        hostileCloud.isPaused = true
-//        cloud.isPaused = true
-//        healthBottle.isPaused = true
-//        bomb.isPaused = true
-        paused = true
-        
-        
-        
-    }
+   
     
     
 }
