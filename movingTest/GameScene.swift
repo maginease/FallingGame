@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 var positionOfBomb = CGPoint(x: 0, y: 0)
-var paused = false
+var paused = true
 
 class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     
@@ -17,12 +17,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
     var thunderCloud = SKSpriteNode()
     let boom = SKSpriteNode(imageNamed: "Boom")
- 
+    let myTouch = UITouch()
     
     
     let scoreDisplay = SKLabelNode()
     var score = 0
-    var totalHealth = 10_000
+    var totalHealth = 10000
     let hp = SKLabelNode()
    
     var currentPosition = CGPoint(x: 0, y: 0)
@@ -55,6 +55,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     }
     
     
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        for touch in touches {
+
+            let location = touch.location(in: self)
+
+            if atPoint(location).name == "restartButton" {
+
+                self.removeAllChildren()
+
+                paused = false
+                
+                createHpBar()
+                
+                createScoreDisplay()
+                
+                createHighScoreDisplay()
+                
+                createMainCharacter()
+
+                totalHealth = 10000
+            }
+
+        }
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let startButton = childNode(withName: "startButton")
@@ -78,31 +105,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         
         }
         
-        
-        let restartButton = childNode(withName: "restartButton")
 
-        guard let RestartButton = restartButton else { return }
-
-        for touchRestart in touches {
-
-            let location = touchRestart.location(in: self)
-
-            if RestartButton.contains(location) {
-
-                removeChildren(in: [RestartButton])
-
-                isPaused = false
-
-                runActions()
-            }
-
-        }
-        
     }
     
     
     
     func runActions() {
+        
+        paused = false
         
             let createBombForever = SKAction.run(Bomb)
         self.run(createBombForever)
@@ -185,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         
         
         
-        let HostileCloudNode = childNode(withName: "hostileCloud")
+        
         
         if (node1.name == "mainCharacter" && node2.name == "hostileCloud") || (node1.name == "hostileCloud" && node2.name == "mainCharacter") {
 
@@ -195,7 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
             
             hp.text = "Health:\(totalHealth)"
             
-            if totalHealth - damageGiven > 0 {
+            if totalHealth > 0 {
           
                 func removeelectrocuted() {
                 removeChildren(in: [electrocuted])
@@ -217,19 +227,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
                 reset()
                 
                 paused = true
+                
+                let RestartButton = childNode(withName: "restartButton")
+
+                guard let restartButton = RestartButton else { return }
+
+
+
+                let location = myTouch.location(in: self.view)
+
+                if restartButton.contains(location) {
+
+                    removeAllChildren()
+
+                    paused = false
+
+                    totalHealth = 10000
+                }
+
+               
+
+
             }
 
 
-            
-
-           
-
-            removeChildren(in: [HostileCloudNode!])
-
-
-
-
-         
 
         }
         
@@ -325,13 +346,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     
     override func update(_ currentTime: TimeInterval) {
         
-        score += 10
+        if paused == false {
+        
+            score += 10
         
         scoreDisplay.text = "score:\(score)"
         
         //score that updates constantly
         
-        
+        }
         
         if score > highScore {
             

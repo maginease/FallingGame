@@ -60,7 +60,7 @@ extension GameScene {
     func reset() {
         
         
-        totalHealth = 10000
+
         
         removeAllChildren()
         
@@ -70,6 +70,8 @@ extension GameScene {
        
         let CreateRestartButton = SKAction.run(RestartButton)
         self.run(CreateRestartButton)
+        
+      
         
     }
     
