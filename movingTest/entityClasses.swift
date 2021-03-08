@@ -191,16 +191,12 @@ class startingButton:SKScene {
     
     func createButton()-> SKNode {
         
-        let button = SKShapeNode(rectOf: CGSize(width: self.frame.size.width / 2, height: self.frame.size.height / 5))
-        let text = SKLabelNode(text: "start")
-
-        button.fillColor = SKColor.purple
-        text.zPosition = 1
-        text.fontSize = 20
-        text.fontColor = SKColor.black
+        let button = SKSpriteNode(imageNamed: "StartButton")
+       
+        button.size = CGSize(width: self.frame.size.width / 2, height: self.frame.size.height / 3)
         button.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
         button.name = "startButton"
-        button.addChild(text)
+       
        
         return button
         
@@ -222,18 +218,15 @@ class restartButton:SKScene {
     
     func createRestartButton() ->SKNode {
         
-        let RestartButton = SKShapeNode(rectOf: CGSize(width: self.frame.width / 2, height: self.frame.height / 8))
+        let RestartButton = SKSpriteNode(imageNamed: "RestartButton")
+        
         RestartButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
-        RestartButton.fillColor = SKColor.purple
+        RestartButton.size = CGSize(width: self.frame.size.width / 2, height: self.frame.size.height / 4)
+        
         RestartButton.zPosition = 0
         RestartButton.name = "restartButton"
         
-        let text = SKLabelNode()
-        text.zPosition = 1
-        text.text = "Restart"
-        text.fontColor = SKColor.black
-        text.fontSize = 20
-        RestartButton.addChild(text)
+      
         
 
         return RestartButton

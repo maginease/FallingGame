@@ -94,7 +94,7 @@ extension GameScene {
     }
     
     
-    func createHpBar(){
+    func createHpBar() {
         
         hp.position = CGPoint(x: self.frame.size.width/5, y: self.frame.size.height * 15 / 16)
         hp.text = "Health:\(totalHealth)"
@@ -149,12 +149,23 @@ extension GameScene {
         
         highScoreDisplay.fontColor = SKColor.black
         highScoreDisplay.fontSize = 15
-        highScoreDisplay.position = CGPoint(x: self.frame.width * 3 / 5, y: self.frame.height * 15 / 16)
+        highScoreDisplay.position = CGPoint(x: self.frame.width * 4 / 5, y: self.frame.height * 15 / 16)
         highScoreDisplay.text = "high score: \(highScore)"
         addChild(highScoreDisplay)
     }
     
-   
+    func createStopButton() {
+
+        let stopButton = SKShapeNode(rectOf: CGSize(width: self.frame.width / 10, height: self.frame.height / 20))
+
+        stopButton.fillColor = SKColor.black
+
+        stopButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height * 15 / 16)
+        stopButton.name = "stopButton"
+
+        nonStopWorld.addChild(stopButton)
+        
+    }
     
     
 }

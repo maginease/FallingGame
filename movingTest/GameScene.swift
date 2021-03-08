@@ -10,6 +10,7 @@ import GameplayKit
 
 var positionOfBomb = CGPoint(x: 0, y: 0)
 var paused = true
+let nonStopWorld = SKNode()
 
 class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     
@@ -17,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
     var thunderCloud = SKSpriteNode()
     let boom = SKSpriteNode(imageNamed: "Boom")
-    let myTouch = UITouch()
+    
     
     
     let scoreDisplay = SKLabelNode()
@@ -51,6 +52,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         let createStartButton = SKAction.run(StartButton)
         self.run(createStartButton)
         
+        addChild(nonStopWorld)
+        
        
     }
     
@@ -77,9 +80,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
                 createMainCharacter()
 
                 totalHealth = 10000
+                
+                hp.text = "Health:\(totalHealth)"
             }
 
         }
+        
+        
+        
+        var stopPressed = false
+        
+        
+        for touchStop in touches {
+            
+            let location = touchStop.location(in: self)
+            
+            if atPoint(location).name == "stopButton" {
+                
+                switch stopPressed {
+                
+                case true:
+                    
+                    stopPressed = false
+                    self.isPaused = false
+                    nonStopWorld.isPaused = false
+                    print(stopPressed)
+                
+                
+                case false:
+                    
+                    stopPressed = true
+                    self.isPaused = true
+                    nonStopWorld.isPaused = false
+                    print(stopPressed)
+                    
+                }
+                
+            }
+            
+        }
+        
+        
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -104,6 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
             
         
         }
+    
+        
+        
+        
+        
         
 
     }
@@ -139,6 +186,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         createHpBar()
         
         createHighScoreDisplay()
+        
+        createStopButton()
         
     }
     
@@ -195,8 +244,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         
         
         
-        
-        
         if (node1.name == "mainCharacter" && node2.name == "hostileCloud") || (node1.name == "hostileCloud" && node2.name == "mainCharacter") {
 
             let damageGiven = 1000
@@ -228,26 +275,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
                 
                 paused = true
                 
-                let RestartButton = childNode(withName: "restartButton")
-
-                guard let restartButton = RestartButton else { return }
-
-
-
-                let location = myTouch.location(in: self.view)
-
-                if restartButton.contains(location) {
-
-                    removeAllChildren()
-
-                    paused = false
-
-                    totalHealth = 10000
-                }
-
                
-
-
             }
 
 
@@ -272,6 +300,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
             createScoreDisplay()
             
             createHighScoreDisplay()
+            
+            
             
             let delay = SKAction.wait(forDuration: 2)
             
