@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
     var thunderCloud = SKSpriteNode()
     let boom = SKSpriteNode(imageNamed: "Boom")
-    
+    var stopPressed = false
     
     
     let scoreDisplay = SKLabelNode()
@@ -47,12 +47,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         createBackground()
        
         
-        currentPosition = mainCharacter.position
-        
         let createStartButton = SKAction.run(StartButton)
         self.run(createStartButton)
         
-        addChild(nonStopWorld)
+        
         
        
     }
@@ -78,6 +76,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
                 createHighScoreDisplay()
                 
                 createMainCharacter()
+                
+                createTouchNode()
+                
+                addChild(nonStopWorld)
+                createStopButton()
 
                 totalHealth = 10000
                 
@@ -88,23 +91,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         
         
         
-        var stopPressed = false
         
         
         for touchStop in touches {
             
             let location = touchStop.location(in: self)
             
+           
+            
             if atPoint(location).name == "stopButton" {
                 
-                switch stopPressed {
                 
-                case true:
-                    
-                    stopPressed = false
-                    self.isPaused = false
-                    nonStopWorld.isPaused = false
-                    print(stopPressed)
+                
+                switch stopPressed {
                 
                 
                 case false:
@@ -112,7 +111,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
                     stopPressed = true
                     self.isPaused = true
                     nonStopWorld.isPaused = false
-                    print(stopPressed)
+                    
+               
+                
+                case true:
+                    
+                    stopPressed = false
+                    self.isPaused = false
+                    nonStopWorld.isPaused = false
                     
                 }
                 
@@ -187,7 +193,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         
         createHighScoreDisplay()
         
+        addChild(nonStopWorld)
         createStopButton()
+        
+        createTouchNode()
         
     }
     
@@ -225,13 +234,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            self.touchMoved(toPoint: t.location(in: self))
-            //every change in touch, this method detects its change in position and sets the value to new one
+       
+        for myTouch in touches {
             
+            let location = myTouch.location(in: self)
+            
+            let xLocationMainCharacter = location.x
+            
+            let constantYMainCharacter = mainCharacter.position.y
+            
+            if atPoint(location).name == "touchNode" {
+            
+                self.touchMoved(toPoint: CGPoint(x: xLocationMainCharacter, y: constantYMainCharacter))
+            //every change in touch, this method detects its change in position and sets the x value to new one where y is a constant.
+                
         }
         
+        }
        
+    
     }
     
    
@@ -300,6 +321,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
             createScoreDisplay()
             
             createHighScoreDisplay()
+            
+            createTouchNode()
+            
+            addChild(nonStopWorld)
+            createStopButton()
             
             
             
@@ -403,6 +429,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
        
         positionOfBomb = Bomb.position
         
+        
+        stopPressed = false
+        
+        currentPosition = mainCharacter.position
     }
    
   

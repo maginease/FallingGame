@@ -156,15 +156,27 @@ extension GameScene {
     
     func createStopButton() {
 
-        let stopButton = SKShapeNode(rectOf: CGSize(width: self.frame.width / 10, height: self.frame.height / 20))
+        let stopButton = SKSpriteNode(imageNamed: "PauseButton")
 
-        stopButton.fillColor = SKColor.black
+        stopButton.size = CGSize(width: self.frame.width / 8, height: self.frame.width / 8)
 
         stopButton.position = CGPoint(x: self.frame.width / 2, y: self.frame.height * 15 / 16)
         stopButton.name = "stopButton"
 
         nonStopWorld.addChild(stopButton)
         
+    }
+    
+    
+    func createTouchNode() {
+        
+        let touchNode = SKShapeNode(rectOf: CGSize(width: self.frame.width, height: self.frame.height / 2))
+        
+        touchNode.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 4)
+        
+        touchNode.name = "touchNode"
+        
+        addChild(touchNode)
     }
     
     
