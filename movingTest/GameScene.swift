@@ -12,13 +12,16 @@ var positionOfBomb = CGPoint(x: 0, y: 0)
 var paused = true
 let nonStopWorld = SKNode()
 
-class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
+class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
+    
+    var lastUpdatedTime:TimeInterval = 0
+    var deltaTime:TimeInterval = 0
     
     let mainCharacter = SKSpriteNode(imageNamed:"falling")
     let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
     var thunderCloud = SKSpriteNode()
     let boom = SKSpriteNode(imageNamed: "Boom")
-    var stopPressed = false
+    var stopButtonPressed = false
     
     
     let scoreDisplay = SKLabelNode()
@@ -103,12 +106,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
                 
                 
                 
-                switch stopPressed {
+                switch stopButtonPressed {
                 
                 
                 case false:
                     
-                    stopPressed = true
+                    stopButtonPressed = true
                     self.isPaused = true
                     nonStopWorld.isPaused = false
                     
@@ -116,9 +119,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
                 
                 case true:
                     
-                    stopPressed = false
+                    stopButtonPressed = false
                     self.isPaused = false
-                    nonStopWorld.isPaused = false
+                    
                     
                 }
                 
@@ -245,10 +248,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
             
             if atPoint(location).name == "touchNode" {
             
-                self.touchMoved(toPoint: CGPoint(x: xLocationMainCharacter, y: constantYMainCharacter))
-            //every change in touch, this method detects its change in position and sets the x value to new one where y is a constant.
+                if stopButtonPressed == false {
                 
-        }
+                    self.touchMoved(toPoint: CGPoint(x: xLocationMainCharacter, y: constantYMainCharacter))
+            //every change in touch, this method detects its change in position while unpaused and sets the x value to new one where y is a constant.
+                }
+       
+            }
+        
         
         }
        
@@ -402,6 +409,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
     
     override func update(_ currentTime: TimeInterval) {
         
+        
+        //controls the speed of the loop. Limiting the update loop to every 0.1 sec.
+        if self.lastUpdatedTime == 0 {
+            
+            lastUpdatedTime = currentTime
+            
+        }
+        
+        deltaTime = currentTime - lastUpdatedTime
+        
+        if deltaTime < TimeInterval(0.1) {
+            return
+        }
+        
+        lastUpdatedTime = currentTime
+        
+        
+        
+        
+        //now adding calculations of my code
         if paused == false {
         
             score += 10
@@ -416,9 +443,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
             
             highScore = score
             
+            highScoreDisplay.text = "highscore: \(highScore)"
+            
         }
-        
-        highScoreDisplay.text = "highscore: \(highScore)"
         
         //sets high score
         
@@ -430,7 +457,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createCharactersFunctions {
         positionOfBomb = Bomb.position
         
         
-        stopPressed = false
+        stopButtonPressed = false
         
         currentPosition = mainCharacter.position
     }

@@ -8,9 +8,9 @@
 import Foundation
 import SpriteKit
 
-protocol createCharactersFunctions:SKScene {}
+protocol createEntityFunctions: SKScene {}
 
-extension createCharactersFunctions {
+extension createEntityFunctions {
     
     func HostileCloud() {
         
