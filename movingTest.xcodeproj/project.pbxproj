@@ -10,6 +10,8 @@
 		6C5ADDD325BEA8FB0017D9AE /* gameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5ADDD225BEA8FB0017D9AE /* gameElements.swift */; };
 		6C81204D25E5F4E900B58484 /* createEntityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C81204C25E5F4E900B58484 /* createEntityFunctions.swift */; };
 		6C8692F325DCF78800E5A684 /* entityClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8692F225DCF78800E5A684 /* entityClasses.swift */; };
+		6C8D6FC525FA20560073403E /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C8D6FC425FA20560073403E /* background.mp3 */; };
+		6C8D6FCD25FA210E0073403E /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8D6FCC25FA210E0073403E /* Audio.swift */; };
 		6C977CF825C3EC4B006032CC /* toUpper.c in Sources */ = {isa = PBXBuildFile; fileRef = 6C977CF725C3EC4B006032CC /* toUpper.c */; };
 		6C97DC2125B936CB005FDF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C97DC2025B936CB005FDF81 /* AppDelegate.swift */; };
 		6C97DC2325B936CB005FDF81 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6C97DC2225B936CB005FDF81 /* GameScene.sks */; };
@@ -44,6 +46,8 @@
 		6C5ADDD225BEA8FB0017D9AE /* gameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameElements.swift; sourceTree = "<group>"; };
 		6C81204C25E5F4E900B58484 /* createEntityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createEntityFunctions.swift; sourceTree = "<group>"; };
 		6C8692F225DCF78800E5A684 /* entityClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = entityClasses.swift; sourceTree = "<group>"; };
+		6C8D6FC425FA20560073403E /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		6C8D6FCC25FA210E0073403E /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		6C977CF525C3EC4B006032CC /* movingTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "movingTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C977CF625C3EC4B006032CC /* toUpper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = toUpper.h; sourceTree = "<group>"; };
 		6C977CF725C3EC4B006032CC /* toUpper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = toUpper.c; sourceTree = "<group>"; };
@@ -90,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C8D6FC325FA203D0073403E /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6C8D6FC425FA20560073403E /* background.mp3 */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 		6C97DC1425B936CB005FDF81 = {
 			isa = PBXGroup;
 			children = (
@@ -113,10 +125,12 @@
 		6C97DC1F25B936CB005FDF81 /* movingTest */ = {
 			isa = PBXGroup;
 			children = (
+				6C8D6FC325FA203D0073403E /* sounds */,
 				6C97DC2025B936CB005FDF81 /* AppDelegate.swift */,
 				6C97DC2225B936CB005FDF81 /* GameScene.sks */,
 				6C97DC2425B936CB005FDF81 /* Actions.sks */,
 				6C97DC2625B936CB005FDF81 /* GameScene.swift */,
+				6C8D6FCC25FA210E0073403E /* Audio.swift */,
 				6C81204C25E5F4E900B58484 /* createEntityFunctions.swift */,
 				6C8692F225DCF78800E5A684 /* entityClasses.swift */,
 				6C5ADDD225BEA8FB0017D9AE /* gameElements.swift */,
@@ -258,6 +272,7 @@
 				6C97DC2325B936CB005FDF81 /* GameScene.sks in Resources */,
 				6C97DC2E25B936CD005FDF81 /* Assets.xcassets in Resources */,
 				6C97DC2525B936CB005FDF81 /* Actions.sks in Resources */,
+				6C8D6FC525FA20560073403E /* background.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C8D6FCD25FA210E0073403E /* Audio.swift in Sources */,
 				6C977CF825C3EC4B006032CC /* toUpper.c in Sources */,
 				6C5ADDD325BEA8FB0017D9AE /* gameElements.swift in Sources */,
 				6C97DC2725B936CB005FDF81 /* GameScene.swift in Sources */,

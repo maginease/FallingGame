@@ -12,7 +12,7 @@ import SpriteKit
 class hostileCloud: SKScene, createCharacterScene {
    
   
-    var timeToGoUp = 3
+    var timeToGoUp = 3.0
    
     override init(size: CGSize) {
        
@@ -64,7 +64,7 @@ class hostileCloud: SKScene, createCharacterScene {
 
 class cloud: SKScene, createCharacterScene {
         
-        var timeToGoUp = 10
+    var timeToGoUp = 10.0
         
         func createCloud()-> SKNode {
             
@@ -93,7 +93,7 @@ class cloud: SKScene, createCharacterScene {
 
 class bomb:SKScene, createCharacterScene {
     
-    var timeToGoUp = 4
+    var timeToGoUp = 4.0
     
     func createBomb() ->SKNode {
         
@@ -134,7 +134,7 @@ class bomb:SKScene, createCharacterScene {
 
 class healthBottle: SKScene, createCharacterScene {
     
-    var timeToGoUp = 4
+    var timeToGoUp = 4.0
     
     
     override init(size: CGSize) {

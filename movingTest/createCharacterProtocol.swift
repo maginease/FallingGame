@@ -10,7 +10,7 @@ import SpriteKit
 
 protocol createCharacterScene: SKScene {
     
-    var timeToGoUp:Int { get }
+    var timeToGoUp:Double { get }
     
    
     

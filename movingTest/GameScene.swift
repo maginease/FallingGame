@@ -53,7 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         let createStartButton = SKAction.run(StartButton)
         self.run(createStartButton)
         
-        
+        playSound(sound: "background", type: "mp3")
         
        
     }
@@ -460,6 +460,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         stopButtonPressed = false
         
         currentPosition = mainCharacter.position
+        
+//        let HostileCloud = hostileCloud(size: CGSize(width: self.frame.width, height: self.frame.height))
+//
+//        HostileCloud.timeToGoUp -= 0.05
+//
+//        scoreDisplay.text = "\(HostileCloud.timeToGoUp)"
+//
+//        guard HostileCloud.timeToGoUp >= 1 else { return }
+        
+       
     }
    
   
