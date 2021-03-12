@@ -53,8 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         let createStartButton = SKAction.run(StartButton)
         self.run(createStartButton)
         
-        playSound(sound: "background", type: "mp3")
-        
+       
        
     }
     
@@ -188,6 +187,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         self.run(createCloudForever)
        // creates cloud on screen
         
+      
+        
         createScoreDisplay()
      
         createMainCharacter()
@@ -294,8 +295,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
             let appendMainCharacter = SKAction.run(createMainCharacter2)
 
             let actionSequence = SKAction.sequence([removeMainCharacter,appendElectrocuted,delay,removeElectrocuted,appendMainCharacter])
-
-            self.run(actionSequence)
+            
+                playSound(sound: "electrocuted", type: "mp3")
+            
+                self.run(actionSequence)
 
             } else {
                 
@@ -334,7 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
             addChild(nonStopWorld)
             createStopButton()
             
-            
+            playSound(sound: "explosion", type: "mp3")
             
             let delay = SKAction.wait(forDuration: 2)
             
@@ -394,7 +397,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
                 totalHealth += 1000
             }
             
-            
+            playSound(sound: "healthRecover", type: "mp3")
             
             hp.text = "Health:\(totalHealth)"
             
