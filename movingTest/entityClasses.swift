@@ -7,7 +7,7 @@
 
 import Foundation
 import SpriteKit
-
+import AVFoundation
 
 class hostileCloud: SKScene, createCharacterScene {
    
@@ -47,6 +47,7 @@ class hostileCloud: SKScene, createCharacterScene {
         Entity.zPosition = 0
         Entity.physicsBody?.restitution = 0
         Entity.zRotation = 0
+    
 
     if paused == false {
         Entity.run(levitateAndRemove(xSpeed: false))

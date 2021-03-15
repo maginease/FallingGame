@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 var positionOfBomb = CGPoint(x: 0, y: 0)
 var paused = true
@@ -187,7 +188,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         self.run(createCloudForever)
        // creates cloud on screen
         
-      
+        self.run(repeatBGM)
         
         createScoreDisplay()
      
@@ -296,8 +297,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
 
             let actionSequence = SKAction.sequence([removeMainCharacter,appendElectrocuted,delay,removeElectrocuted,appendMainCharacter])
             
-                playSound(sound: "electrocuted", type: "mp3")
-            
+                let playElectrocutedSound = SKAction.playSoundFileNamed("electrocuted.mp3", waitForCompletion: false)
+                
+                self.run(playElectrocutedSound)
                 self.run(actionSequence)
 
             } else {
@@ -337,7 +339,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
             addChild(nonStopWorld)
             createStopButton()
             
-            playSound(sound: "explosion", type: "mp3")
+            let explosionSound = SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false)
+            
+            self.run(explosionSound)
             
             let delay = SKAction.wait(forDuration: 2)
             

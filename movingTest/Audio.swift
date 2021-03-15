@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import SpriteKit
+import AVKit
 
 var audio:AVAudioPlayer?
 
@@ -25,18 +26,17 @@ func playSound(sound:String, type:String) {
 }
 
 
-//func playBGM() { playSound(sound: "background", type: "mp3") }
-//let PlayBgm = SKAction.run(playBGM)
-//let repeatBgmForever = SKAction.repeatForever(PlayBgm)
 
-func playBGM1() { playSound(sound: "B1", type: "m4a")}
-let PlayBGM1 = SKAction.run(playBGM1)
 
-func playBGM2() { playSound(sound: "B2", type: "m4a")}
-let PlayBGM2 = SKAction.run(playBGM2)
 
-func playBGM3() { playSound(sound: "B3", type: "m4a")}
-let PlayBGM3 = SKAction.run(playBGM3)
+let PlayBGM1 = SKAction.playSoundFileNamed("BGM1.mp3", waitForCompletion: true)
+
+let PlayBGM2 = SKAction.playSoundFileNamed("BGM2.mp3", waitForCompletion: true)
+
+let PlayBGM3 = SKAction.playSoundFileNamed("BGM3.mp3", waitForCompletion: true)
+
+let PlayBGM4 = SKAction.playSoundFileNamed("BGM4.mp3", waitForCompletion: true)
+
 
 
 func randomizeBGM(_ targetArray:[SKAction])->[SKAction] {
@@ -64,35 +64,8 @@ func randomizeBGM(_ targetArray:[SKAction])->[SKAction] {
 
 
 
-var randomBGM = randomizeBGM([PlayBGM1,PlayBGM2,PlayBGM3])
+var randomBGM = randomizeBGM([PlayBGM1,PlayBGM2,PlayBGM3,PlayBGM4])
 
+var BGMarray = SKAction.sequence(randomBGM)
+var repeatBGM = SKAction.repeatForever(BGMarray)
 
-class BGM_Randomizer {
-    
-    var BGMCount = 3
-    var array:[SKAction]
-    
-    init() {
-        
-        var properArray = [PlayBGM1,PlayBGM2,PlayBGM3]
-        var arrayApended = [SKAction]()
-        var index = BGMCount
-        
-        for _ in 1...BGMCount {
-            
-            let randomIndex = Int.random(in: 0...index - 1)
-            
-            arrayApended.append(properArray[randomIndex])
-            
-            properArray.remove(at: randomIndex)
-            
-            index -= 1
-            
-        }
-        
-        array = arrayApended
-    }
-   
-    
-    
-}
