@@ -13,12 +13,12 @@ import SpriteKit
 
 struct category {
     
-    static let mainCharacterCategory:UInt32 = 0x1 << 0
-    // 1
+    static let mainCharacterCategory:UInt32 = 0x1 << 2
+    // 4
     static let hostileCloudCategory:UInt32 = 0x1 << 1
     //2
-    static let backgroundCategory:UInt32 = 0x1 << 2
-    //4
+    static let backgroundCategory:UInt32 = 0x1 << 0
+    //1
     static let healthrestore:UInt32 = 0x1 << 3
     //8
     static let bombCategory:UInt32 = 0x1 << 4

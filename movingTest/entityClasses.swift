@@ -29,27 +29,31 @@ class hostileCloud: SKScene, createCharacterScene {
       
        let Entity = SKSpriteNode(imageNamed: "thundercloud-hostile")
     
-    physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
     Entity.anchorPoint = CGPoint(x: 0, y: 0)
-       
-    Entity.physicsBody?.affectedByGravity = false
-        Entity.physicsBody?.isDynamic = false
-        
-        Entity.size = CGSize(width: self.frame.width / 6, height: self.frame.height / 12)
     Entity.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.width / 20, height: self.frame.height / 40))
     
+    Entity.physicsBody?.affectedByGravity = false
+        Entity.physicsBody?.isDynamic = false
+
+        Entity.size = CGSize(width: self.frame.width / 6, height: self.frame.height / 12)
+    
+    Entity.name = "hostileCloud"
+
     Entity.physicsBody?.contactTestBitMask = category.mainCharacterCategory
     Entity.physicsBody?.categoryBitMask = category.hostileCloudCategory
-    
+
 
     Entity.position = CGPoint(x: Int.random(in: 0...(Int(self.frame.width) - Int(Entity.size.width))), y: 1)
-        Entity.name = "hostileCloud"
-        Entity.zPosition = 0
+        
+        
+    
+    Entity.zPosition = 0
         Entity.physicsBody?.restitution = 0
         Entity.zRotation = 0
-    
 
+    
     if paused == false {
+        
         Entity.run(levitateAndRemove(xSpeed: false))
 
     return Entity
@@ -100,11 +104,13 @@ class bomb:SKScene, createCharacterScene {
         
         let bomb = SKSpriteNode(imageNamed: "bomb")
         
+        bomb.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width/10, height: self.frame.size.height/30))
+        
         bomb.physicsBody?.isDynamic = false
         bomb.physicsBody?.affectedByGravity = false
         bomb.name = "bomb"
         
-        bomb.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width/10, height: self.frame.size.height/30))
+       
         bomb.size = CGSize(width: self.frame.width / 2, height: self.frame.height * 3 / 5)
         bomb.position = CGPoint(x: Int.random(in: 0...(Int(self.frame.size.width)) - Int(bomb.size.width)), y: 1)
         bomb.physicsBody?.allowsRotation = false

@@ -44,9 +44,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         self.anchorPoint = CGPoint(x: 0, y: 0)
         physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-        // sets gravity to 0
-        
         
         createBackground()
        
@@ -188,7 +185,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         self.run(createCloudForever)
        // creates cloud on screen
         
-        self.run(repeatBGM)
+        
+        let bgm = BGM(size: CGSize(width: self.frame.width, height: self.frame.height))
+
+        let randomBGM = bgm.randomizeBGM([bgm.PlayBGM1,bgm.PlayBGM2,bgm.PlayBGM3,bgm.PlayBGM4])
+        let BGMarray = SKAction.sequence(randomBGM)
+        let repeatBGM = SKAction.repeatForever(BGMarray)
+
+        bgm.audioEngine.mainMixerNode.outputVolume = 0.1
+//        self.run(repeatBGM)
         
         createScoreDisplay()
      
@@ -282,6 +287,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
             
             hp.text = "Health:\(totalHealth)"
             
+            
+            let electrocutedSound = SKAudioNode(fileNamed:"electrocuted.mp3")
+           
+            
+            if node1.name == "hostileCloud" {
+                
+                node1.addChild(electrocutedSound)
+                removeChildren(in: [node1])
+            }
+            
+            if node2.name == "hostileCloud" {
+                
+                node2.addChild(electrocutedSound)
+                removeChildren(in:[node2])
+            }
+            
             if totalHealth > 0 {
           
                 func removeelectrocuted() {
@@ -297,10 +318,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
 
             let actionSequence = SKAction.sequence([removeMainCharacter,appendElectrocuted,delay,removeElectrocuted,appendMainCharacter])
             
-                let playElectrocutedSound = SKAction.playSoundFileNamed("electrocuted.mp3", waitForCompletion: false)
-                
-                self.run(playElectrocutedSound)
+               
+               
                 self.run(actionSequence)
+                
 
             } else {
                 
@@ -315,7 +336,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
 
         }
         
-       
+        let Bomb = childNode(withName:"bomb")
         
         if (node1.name == "mainCharacter" && node2.name == "bomb") || (node1.name == "bomb" && node2.name == "mainCharacter") {
            
@@ -339,9 +360,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
             addChild(nonStopWorld)
             createStopButton()
             
-            let explosionSound = SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false)
+            let explosionSound = SKAudioNode(fileNamed:"explosion.mp3")
             
-            self.run(explosionSound)
+            
+    
             
             let delay = SKAction.wait(forDuration: 2)
             
@@ -358,6 +380,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
             func addBoom() {
                 
                 boom.run(SKAction.resize(byWidth: self.frame.width, height: self.frame.height, duration: 2))
+                boom.addChild(explosionSound)
                 addChild(boom)
                 
             }
@@ -366,7 +389,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
                 removeChildren(in: [boom])
             }
 
-          
+            
             
             let appendBoom = SKAction.run(addBoom)
             let terminateBoom = SKAction.run(removeBoom)
@@ -401,7 +424,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
                 totalHealth += 1000
             }
             
-            playSound(sound: "healthRecover", type: "mp3")
+            let healthRecoverSound = SKAudioNode(fileNamed: "healthRecover.mp3")
+            HealthRestore?.addChild(healthRecoverSound)
             
             hp.text = "Health:\(totalHealth)"
             

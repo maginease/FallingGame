@@ -31,6 +31,10 @@ class GameViewController: UIViewController {
             
             view.showsPhysics = false
         }
+        
+        let scene = SKScene()
+        
+        scene.audioEngine.mainMixerNode.outputVolume = 1
     }
 
     override var shouldAutorotate: Bool {

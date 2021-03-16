@@ -27,45 +27,45 @@ func playSound(sound:String, type:String) {
 
 
 
+class BGM:SKScene {
+  
+    let PlayBGM1 = SKAction.playSoundFileNamed("BGM1.mp3", waitForCompletion: true)
+
+    let PlayBGM2 = SKAction.playSoundFileNamed("BGM2.mp3", waitForCompletion: true)
+
+    let PlayBGM3 = SKAction.playSoundFileNamed("BGM3.mp3", waitForCompletion: true)
+
+    let PlayBGM4 = SKAction.playSoundFileNamed("BGM4.mp3", waitForCompletion: true)
 
 
-let PlayBGM1 = SKAction.playSoundFileNamed("BGM1.mp3", waitForCompletion: true)
 
-let PlayBGM2 = SKAction.playSoundFileNamed("BGM2.mp3", waitForCompletion: true)
-
-let PlayBGM3 = SKAction.playSoundFileNamed("BGM3.mp3", waitForCompletion: true)
-
-let PlayBGM4 = SKAction.playSoundFileNamed("BGM4.mp3", waitForCompletion: true)
-
-
-
-func randomizeBGM(_ targetArray:[SKAction])->[SKAction] {
-    
-    var index = targetArray.count
-    
-    var result = [SKAction]()
-    
-    var array = targetArray
-    
-    for _ in 1...targetArray.count {
+    func randomizeBGM(_ targetArray:[SKAction])->[SKAction] {
         
-        let randomIndex = Int.random(in: 0...index - 1)
+        var index = targetArray.count
         
-        result.append(array[randomIndex])
+        var result = [SKAction]()
         
-        array.remove(at: randomIndex)
+        var array = targetArray
         
-        index -= 1
+        for _ in 1...targetArray.count {
+            
+            let randomIndex = Int.random(in: 0...index - 1)
+            
+            result.append(array[randomIndex])
+            
+            array.remove(at: randomIndex)
+            
+            index -= 1
+        }
+        
+        
+        return result
     }
-    
-    
-    return result
+
+
+
 }
 
 
 
-var randomBGM = randomizeBGM([PlayBGM1,PlayBGM2,PlayBGM3,PlayBGM4])
-
-var BGMarray = SKAction.sequence(randomBGM)
-var repeatBGM = SKAction.repeatForever(BGMarray)
 
