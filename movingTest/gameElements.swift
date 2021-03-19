@@ -53,14 +53,7 @@ extension GameScene {
     
     
     
-    
-    
-    
-    
     func reset() {
-        
-        
-
         
         removeAllChildren()
         
@@ -178,6 +171,34 @@ extension GameScene {
         
         addChild(touchNode)
     }
+    
+    func GameOverSound() {
+        
+        let gameOverSound = SKAudioNode(fileNamed: "game over.mp3")
+        // duration: 3 sec
+        
+        func addSound() {
+        
+        mainCharacter.addChild(gameOverSound)
+        
+        }
+        
+        let add = SKAction.run(addSound)
+        let wait = SKAction.wait(forDuration: 3)
+        
+        func removeSound() {
+            
+            mainCharacter.removeChildren(in:[gameOverSound])
+            
+        }
+        
+        let RemoveSound = SKAction.run(removeSound)
+        
+        let actionArray = SKAction.sequence([add,wait,RemoveSound])
+        
+        self.run(actionArray)
+    }
+    
     
     
 }

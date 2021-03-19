@@ -14,8 +14,13 @@ extension createEntityFunctions {
     
     func HostileCloud() {
         
-        let hostilecloud = hostileCloud(size: CGSize(width: self.frame.width, height: self.frame.height))
+        thunderCloud = hostileCloud(size: CGSize(width: self.frame.width, height: self.frame.height))
+        
+        let hostilecloud = thunderCloud
 
+        hostilecloud.timeToGoUp = speedForHostile 
+       
+        
         func addHostile() {
             addChild(hostilecloud.createHostileCloud())
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C334B992601F2C400C4606D /* game over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C334B982601F2C400C4606D /* game over.mp3 */; };
 		6C5ADDD325BEA8FB0017D9AE /* gameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5ADDD225BEA8FB0017D9AE /* gameElements.swift */; };
 		6C81204D25E5F4E900B58484 /* createEntityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C81204C25E5F4E900B58484 /* createEntityFunctions.swift */; };
 		6C85344C25FF5E0700ABA33D /* BGM1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C85344B25FF5E0700ABA33D /* BGM1.mp3 */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C334B982601F2C400C4606D /* game over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game over.mp3"; sourceTree = "<group>"; };
 		6C5ADDD225BEA8FB0017D9AE /* gameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameElements.swift; sourceTree = "<group>"; };
 		6C81204C25E5F4E900B58484 /* createEntityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createEntityFunctions.swift; sourceTree = "<group>"; };
 		6C85344B25FF5E0700ABA33D /* BGM1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGM1.mp3; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				6C85345025FF60F200ABA33D /* BGM3.mp3 */,
 				6C85345125FF60F200ABA33D /* BGM4.mp3 */,
 				6C8C3CDE25FB58FE006F80AA /* healthRecover.mp3 */,
+				6C334B982601F2C400C4606D /* game over.mp3 */,
 				6CB4C5192600B116007D8405 /* explosion.mp3 */,
 				6CB4C51126008F96007D8405 /* electrocuted.mp3 */,
 			);
@@ -291,6 +294,7 @@
 				6C97DC2C25B936CB005FDF81 /* Main.storyboard in Resources */,
 				6C97DC2325B936CB005FDF81 /* GameScene.sks in Resources */,
 				6C97DC2E25B936CD005FDF81 /* Assets.xcassets in Resources */,
+				6C334B992601F2C400C4606D /* game over.mp3 in Resources */,
 				6C8C3CDF25FB58FE006F80AA /* healthRecover.mp3 in Resources */,
 				6C85345325FF60F200ABA33D /* BGM4.mp3 in Resources */,
 				6CB4C51A2600B116007D8405 /* explosion.mp3 in Resources */,

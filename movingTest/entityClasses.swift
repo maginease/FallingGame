@@ -12,16 +12,9 @@ import AVFoundation
 class hostileCloud: SKScene, createCharacterScene {
    
   
-    var timeToGoUp = 3.0
+    var timeToGoUp = 3.0 
    
-    override init(size: CGSize) {
-       
-       super.init(size: size)
-   }
- 
-   required init?(coder aDecoder: NSCoder) {
-       fatalError("init(coder:) has not been implemented")
-   }
+
    
    
    

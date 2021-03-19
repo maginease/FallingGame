@@ -12,6 +12,9 @@ import AVFoundation
 var positionOfBomb = CGPoint(x: 0, y: 0)
 var paused = true
 let nonStopWorld = SKNode()
+var speedForHostile:Double = 0
+let debugLabel = SKLabelNode()
+var thunderCloud = hostileCloud()
 
 class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
     
@@ -20,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
     
     let mainCharacter = SKSpriteNode(imageNamed:"falling")
     let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
-    var thunderCloud = SKSpriteNode()
+    
     let boom = SKSpriteNode(imageNamed: "Boom")
     var stopButtonPressed = false
     
@@ -51,8 +54,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         let createStartButton = SKAction.run(StartButton)
         self.run(createStartButton)
         
-       
-       
+        debugLabel.position = CGPoint(x: self.frame.width / 2, y: self.frame.height * 15 / 16)
+        
+       addChild(debugLabel)
     }
     
     
@@ -325,10 +329,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
 
             } else {
                 
+               
+                GameOverSound()
+                
                 reset()
                 
                 paused = true
-                
+               
                
             }
 
@@ -336,7 +343,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
 
         }
         
-        let Bomb = childNode(withName:"bomb")
+       
         
         if (node1.name == "mainCharacter" && node2.name == "bomb") || (node1.name == "bomb" && node2.name == "mainCharacter") {
            
@@ -405,6 +412,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
                 
                 reset()
                 
+                GameOverSound()
+                
 
             }
 
@@ -459,15 +468,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         
         
         
+        if speedForHostile == 0 {
+            
+            speedForHostile = hostileCloud(size: CGSize(width: self.frame.width, height: self.frame.height)).timeToGoUp
+            
+        }
+        
+         
+               
         //now adding calculations of my code
         if paused == false {
         
             score += 10
         
         scoreDisplay.text = "score:\(score)"
-        
-        //score that updates constantly
-        
+            
+           //score that updates constantly
+            
+            if speedForHostile > 1 {
+
+                speedForHostile -= 0.001
+
+               
+
+            }
+//            let hostilecloud = hostileCloud(size: CGSize(width: self.frame.width, height: self.frame.height))
+//
+//            hostilecloud.timeToGoUp = speedForHostile
+//            debugLabel.text = "\(hostilecloud.timeToGoUp)"
+            
+            thunderCloud.timeToGoUp = speedForHostile
+          
         }
         
         if score > highScore {
@@ -492,14 +523,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         
         currentPosition = mainCharacter.position
         
-//        let HostileCloud = hostileCloud(size: CGSize(width: self.frame.width, height: self.frame.height))
-//
-//        HostileCloud.timeToGoUp -= 0.05
-//
-//        scoreDisplay.text = "\(HostileCloud.timeToGoUp)"
-//
-//        guard HostileCloud.timeToGoUp >= 1 else { return }
+      
         
+        
+        
+        
+       
        
     }
    
