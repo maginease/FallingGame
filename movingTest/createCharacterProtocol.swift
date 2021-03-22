@@ -12,7 +12,7 @@ protocol createCharacterScene: SKScene {
     
     var timeToGoUp:Double { get }
     
-   
+    var spawnDelay:Double { get }
     
 }
 

@@ -18,19 +18,22 @@ extension createEntityFunctions {
         
         let hostilecloud = thunderCloud
 
-        hostilecloud.timeToGoUp = speedForHostile 
-       
+        hostilecloud.timeToGoUp = speedForHostile
+        hostilecloud.spawnDelay = hostileCloudSpawnDelay
         
         func addHostile() {
-            addChild(hostilecloud.createHostileCloud())
+            addChild(hostilecloud.createHostileCloud().0)
         }
 
+        let delay =  hostilecloud.createHostileCloud().1
         let spawnH = SKAction.run(addHostile)
-        let delayH = SKAction.wait(forDuration: 0.5)
-        let sequenceH = SKAction.sequence([spawnH,delayH])
+
+        let sequenceH = SKAction.sequence([spawnH,delay])
         let repeatingHostileCloudProduction = SKAction.repeatForever(sequenceH)
-        
         self.run(repeatingHostileCloudProduction)
+        
+      
+        
     }
     
     func Cloud() {
@@ -75,7 +78,7 @@ extension createEntityFunctions {
         }
         
         let spawnHealth = SKAction.run(addBottle)
-        let delayHealth = SKAction.wait(forDuration: 5)
+        let delayHealth = SKAction.wait(forDuration: 20)
         let sequenceHealth = SKAction.sequence([spawnHealth,delayHealth])
         let repeatingHelathBottleReproduction = SKAction.repeatForever(sequenceHealth)
         self.run(repeatingHelathBottleReproduction)

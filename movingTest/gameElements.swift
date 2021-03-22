@@ -59,7 +59,7 @@ extension GameScene {
         
         score = 0
        
-        
+        speedForHostile = 3
        
         let CreateRestartButton = SKAction.run(RestartButton)
         self.run(CreateRestartButton)

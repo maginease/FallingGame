@@ -13,7 +13,7 @@ var positionOfBomb = CGPoint(x: 0, y: 0)
 var paused = true
 let nonStopWorld = SKNode()
 var speedForHostile:Double = 0
-let debugLabel = SKLabelNode()
+var hostileCloudSpawnDelay = 0.5
 var thunderCloud = hostileCloud()
 
 class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
@@ -37,7 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
     let highScoreDisplay = SKLabelNode()
     var highScore = 0
     var positionOfBomb = CGPoint(x: 0, y: 0)
-    
+    var bgm = BGM()
+    let playBgm = returnSound(sound: "BGM1", type: "mp3")
+
     
     
     
@@ -54,9 +56,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         let createStartButton = SKAction.run(StartButton)
         self.run(createStartButton)
         
-        debugLabel.position = CGPoint(x: self.frame.width / 2, y: self.frame.height * 15 / 16)
-        
-       addChild(debugLabel)
+       
     }
     
     
@@ -115,13 +115,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
                     stopButtonPressed = true
                     self.isPaused = true
                     nonStopWorld.isPaused = false
-                    
+                    self.audioEngine.pause()
+                    paused = true
                
                 
                 case true:
                     
                     stopButtonPressed = false
                     self.isPaused = false
+                    paused = false
                     
                     
                 }
@@ -190,13 +192,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
        // creates cloud on screen
         
         
-        let bgm = BGM(size: CGSize(width: self.frame.width, height: self.frame.height))
-
-        let randomBGM = bgm.randomizeBGM([bgm.PlayBGM1,bgm.PlayBGM2,bgm.PlayBGM3,bgm.PlayBGM4])
-        let BGMarray = SKAction.sequence(randomBGM)
-        let repeatBGM = SKAction.repeatForever(BGMarray)
-
-        bgm.audioEngine.mainMixerNode.outputVolume = 0.1
+       
+//        let randomBGM = bgm.randomizeBGM([bgm.PlayBGM1,bgm.PlayBGM2,bgm.PlayBGM3,bgm.PlayBGM4])
+//        let BGMarray = SKAction.sequence(randomBGM)
+//        let repeatBGM = SKAction.repeatForever(BGMarray)
+//
+//        bgm.audioEngine.mainMixerNode.outputVolume = 0.1
 //        self.run(repeatBGM)
         
         createScoreDisplay()
@@ -485,18 +486,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
             
            //score that updates constantly
             
-            if speedForHostile > 1 {
+            if speedForHostile > 0.5 {
 
-                speedForHostile -= 0.001
-
+                speedForHostile -= 0.01
+                
+                hostileCloudSpawnDelay -= 0.001
                
 
             }
-//            let hostilecloud = hostileCloud(size: CGSize(width: self.frame.width, height: self.frame.height))
-//
-//            hostilecloud.timeToGoUp = speedForHostile
-//            debugLabel.text = "\(hostilecloud.timeToGoUp)"
-            
+            thunderCloud.spawnDelay = hostileCloudSpawnDelay
             thunderCloud.timeToGoUp = speedForHostile
           
         }
@@ -521,12 +519,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         
         stopButtonPressed = false
         
+        
+        bgm = BGM(size: CGSize(width: self.frame.width, height: self.frame.height))
+
+        
         currentPosition = mainCharacter.position
         
-      
-        
-        
-        
+       
+
+//
+//        var playArray = [1,2,3,4]
+//
+//        var itemIndex = 4
+//
+//
+//
+//        if paused == false {
+//
+//            if itemIndex > 0 {
+//
+//            let randomIndex = Int.random(in: 0...(itemIndex - 1))
+//
+//                Bgm(playArray[randomIndex])!.volume = 0.3
+//                Bgm(playArray[randomIndex])!.play()
+//
+//
+//
+//                playArray.remove(at: randomIndex)
+//
+//            itemIndex -= 1
+//
+//            } else { itemIndex = 4; playArray = [1,2,3,4]; }
+//
+//
+//        } else { }
         
        
        
