@@ -14,6 +14,7 @@ var paused = true
 let nonStopWorld = SKNode()
 var speedForHostile:Double = 0
 var thunderCloud = hostileCloud()
+var currentPosition = CGPoint(x: 0, y: 0)
 
 class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
     
@@ -21,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
     var deltaTime:TimeInterval = 0
     
     let mainCharacter = SKSpriteNode(imageNamed:"falling")
-    let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
+    
     
     let boom = SKSpriteNode(imageNamed: "Boom")
     var stopButtonPressed = false
@@ -32,7 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
     var totalHealth = 10000
     let hp = SKLabelNode()
    
-    var currentPosition = CGPoint(x: 0, y: 0)
+   
     let highScoreDisplay = SKLabelNode()
     var highScore = 0
     var positionOfBomb = CGPoint(x: 0, y: 0)
@@ -307,16 +308,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
                 removeChildren(in:[node2])
             }
             
+            let Electrocuted = electrocuted(size: CGSize(width: self.frame.width, height: self.frame.height))
+            
+            let electrocutedNode = Electrocuted.createNode()
+            
             if totalHealth > 0 {
           
                 func removeelectrocuted() {
-                removeChildren(in: [electrocuted])
+                removeChildren(in: [electrocutedNode])
             }
+                
+                func createElectrocuted() { self.addChild(electrocutedNode) }
 
             let removeMainCharacter = SKAction.run(removemainCharacter)
             let removeElectrocuted = SKAction.run(removeelectrocuted)
 
-            let appendElectrocuted = SKAction.run(createElectrocuted)
+                let appendElectrocuted = SKAction.run(createElectrocuted)
             let delay = SKAction.wait(forDuration: 0.6)
             let appendMainCharacter = SKAction.run(createMainCharacter2)
 

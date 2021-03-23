@@ -237,3 +237,20 @@ class restartButton:SKScene {
 }
 
 
+class electrocuted:SKScene {
+    
+    func createNode()->SKNode {
+        
+        let electrocuted = SKSpriteNode(imageNamed: "electrocuted")
+        
+        electrocuted.position = currentPosition
+        electrocuted.physicsBody?.affectedByGravity = false
+        electrocuted.physicsBody?.isDynamic = false
+        electrocuted.size = CGSize(width: self.frame.size.width/3, height: self.frame.size.height/5)
+        
+        return electrocuted
+    }
+    
+}
+
+

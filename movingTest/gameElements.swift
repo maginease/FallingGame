@@ -112,18 +112,7 @@ extension GameScene {
         addChild(mainCharacter)
     }
     
-    func createElectrocuted() {
-
-
-        electrocuted.position = currentPosition
-        electrocuted.physicsBody?.affectedByGravity = false
-        electrocuted.physicsBody?.isDynamic = false
-        electrocuted.size = CGSize(width: self.frame.size.width/3, height: self.frame.size.height/5)
-
-
-        self.addChild(electrocuted)
-    }
-    
+   
     func removemainCharacter() {
         removeChildren(in: [mainCharacter])
         
