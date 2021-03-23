@@ -163,9 +163,9 @@ extension GameScene {
     
     func createTouchNode() {
         
-        let touchNode = SKShapeNode(rectOf: CGSize(width: self.frame.width, height: self.frame.height / 2))
+        let touchNode = SKShapeNode(rectOf: CGSize(width: self.frame.width, height: self.frame.height / 3))
         
-        touchNode.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 4)
+        touchNode.position = CGPoint(x: self.frame.width / 2, y: self.frame.height / 6)
         
         touchNode.name = "touchNode"
         

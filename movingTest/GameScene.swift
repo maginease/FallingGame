@@ -13,7 +13,6 @@ var positionOfBomb = CGPoint(x: 0, y: 0)
 var paused = true
 let nonStopWorld = SKNode()
 var speedForHostile:Double = 0
-var hostileCloudSpawnDelay = 0.5
 var thunderCloud = hostileCloud()
 
 class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
@@ -490,12 +489,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
 
                 speedForHostile -= 0.01
                 
-                hostileCloudSpawnDelay -= 0.001
+               
                
 
             }
-            thunderCloud.spawnDelay = hostileCloudSpawnDelay
-            thunderCloud.timeToGoUp = speedForHostile
+            
           
         }
         
@@ -520,7 +518,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, createEntityFunctions {
         stopButtonPressed = false
         
         
-        bgm = BGM(size: CGSize(width: self.frame.width, height: self.frame.height))
+       
 
         
         currentPosition = mainCharacter.position

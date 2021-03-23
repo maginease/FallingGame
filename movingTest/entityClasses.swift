@@ -14,11 +14,8 @@ class hostileCloud: SKScene, createCharacterScene {
   
     var timeToGoUp = 3.0 
    
-    var spawnDelay = 0.5
    
-   
-   
-   func createHostileCloud() -> (SKNode,SKAction) {
+   func createHostileCloud() -> SKNode {
       
        let Entity = SKSpriteNode(imageNamed: "thundercloud-hostile")
     
@@ -49,12 +46,12 @@ class hostileCloud: SKScene, createCharacterScene {
         
         Entity.run(levitateAndRemove(xSpeed: false))
 
-        return (Entity,SKAction.wait(forDuration: self.spawnDelay))
+        return Entity
       
     }
     let EmptyNode = SKSpriteNode()
     
-    return (EmptyNode,SKAction.wait(forDuration: self.spawnDelay))
+    return EmptyNode
    }
     
 }
@@ -64,7 +61,6 @@ class cloud: SKScene, createCharacterScene {
         
     var timeToGoUp = 10.0
     
-    var spawnDelay = 3.0
         
         func createCloud()-> SKNode {
             
@@ -95,7 +91,6 @@ class bomb:SKScene, createCharacterScene {
     
     var timeToGoUp = 4.0
     
-    var spawnDelay = 50.0
     
     func createBomb() ->SKNode {
         
@@ -140,7 +135,6 @@ class healthBottle: SKScene, createCharacterScene {
     
     var timeToGoUp = 4.0
     
-    var spawnDelay = 20.0
     
     override init(size: CGSize) {
         super.init(size: size)
