@@ -63,7 +63,7 @@
 		6C977CF525C3EC4B006032CC /* movingTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "movingTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C977CF625C3EC4B006032CC /* toUpper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = toUpper.h; sourceTree = "<group>"; };
 		6C977CF725C3EC4B006032CC /* toUpper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = toUpper.c; sourceTree = "<group>"; };
-		6C97DC1D25B936CB005FDF81 /* movingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = movingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C97DC1D25B936CB005FDF81 /* FallingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97DC2025B936CB005FDF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C97DC2225B936CB005FDF81 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		6C97DC2425B936CB005FDF81 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -72,10 +72,10 @@
 		6C97DC2B25B936CB005FDF81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6C97DC2D25B936CD005FDF81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C97DC2F25B936CD005FDF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C97DC3425B936CE005FDF81 /* movingTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = movingTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C97DC3425B936CE005FDF81 /* FallingGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FallingGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97DC3825B936CE005FDF81 /* movingTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movingTestTests.swift; sourceTree = "<group>"; };
 		6C97DC3A25B936CE005FDF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C97DC3F25B936CE005FDF81 /* movingTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = movingTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C97DC3F25B936CE005FDF81 /* FallingGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FallingGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97DC4325B936CE005FDF81 /* movingTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movingTestUITests.swift; sourceTree = "<group>"; };
 		6C97DC4525B936CE005FDF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CB4C51126008F96007D8405 /* electrocuted.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = electrocuted.mp3; sourceTree = "<group>"; };
@@ -136,9 +136,9 @@
 		6C97DC1E25B936CB005FDF81 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6C97DC1D25B936CB005FDF81 /* movingTest.app */,
-				6C97DC3425B936CE005FDF81 /* movingTestTests.xctest */,
-				6C97DC3F25B936CE005FDF81 /* movingTestUITests.xctest */,
+				6C97DC1D25B936CB005FDF81 /* FallingGame.app */,
+				6C97DC3425B936CE005FDF81 /* FallingGameTests.xctest */,
+				6C97DC3F25B936CE005FDF81 /* FallingGameUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,9 +188,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6C97DC1C25B936CB005FDF81 /* movingTest */ = {
+		6C97DC1C25B936CB005FDF81 /* FallingGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6C97DC4825B936CE005FDF81 /* Build configuration list for PBXNativeTarget "movingTest" */;
+			buildConfigurationList = 6C97DC4825B936CE005FDF81 /* Build configuration list for PBXNativeTarget "FallingGame" */;
 			buildPhases = (
 				6C97DC1925B936CB005FDF81 /* Sources */,
 				6C97DC1A25B936CB005FDF81 /* Frameworks */,
@@ -200,14 +200,14 @@
 			);
 			dependencies = (
 			);
-			name = movingTest;
+			name = FallingGame;
 			productName = movingTest;
-			productReference = 6C97DC1D25B936CB005FDF81 /* movingTest.app */;
+			productReference = 6C97DC1D25B936CB005FDF81 /* FallingGame.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6C97DC3325B936CE005FDF81 /* movingTestTests */ = {
+		6C97DC3325B936CE005FDF81 /* FallingGameTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6C97DC4B25B936CE005FDF81 /* Build configuration list for PBXNativeTarget "movingTestTests" */;
+			buildConfigurationList = 6C97DC4B25B936CE005FDF81 /* Build configuration list for PBXNativeTarget "FallingGameTests" */;
 			buildPhases = (
 				6C97DC3025B936CE005FDF81 /* Sources */,
 				6C97DC3125B936CE005FDF81 /* Frameworks */,
@@ -218,14 +218,14 @@
 			dependencies = (
 				6C97DC3625B936CE005FDF81 /* PBXTargetDependency */,
 			);
-			name = movingTestTests;
+			name = FallingGameTests;
 			productName = movingTestTests;
-			productReference = 6C97DC3425B936CE005FDF81 /* movingTestTests.xctest */;
+			productReference = 6C97DC3425B936CE005FDF81 /* FallingGameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		6C97DC3E25B936CE005FDF81 /* movingTestUITests */ = {
+		6C97DC3E25B936CE005FDF81 /* FallingGameUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6C97DC4E25B936CE005FDF81 /* Build configuration list for PBXNativeTarget "movingTestUITests" */;
+			buildConfigurationList = 6C97DC4E25B936CE005FDF81 /* Build configuration list for PBXNativeTarget "FallingGameUITests" */;
 			buildPhases = (
 				6C97DC3B25B936CE005FDF81 /* Sources */,
 				6C97DC3C25B936CE005FDF81 /* Frameworks */,
@@ -236,9 +236,9 @@
 			dependencies = (
 				6C97DC4125B936CE005FDF81 /* PBXTargetDependency */,
 			);
-			name = movingTestUITests;
+			name = FallingGameUITests;
 			productName = movingTestUITests;
-			productReference = 6C97DC3F25B936CE005FDF81 /* movingTestUITests.xctest */;
+			productReference = 6C97DC3F25B936CE005FDF81 /* FallingGameUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -264,7 +264,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6C97DC1825B936CB005FDF81 /* Build configuration list for PBXProject "movingTest" */;
+			buildConfigurationList = 6C97DC1825B936CB005FDF81 /* Build configuration list for PBXProject "FallingGame" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -277,9 +277,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6C97DC1C25B936CB005FDF81 /* movingTest */,
-				6C97DC3325B936CE005FDF81 /* movingTestTests */,
-				6C97DC3E25B936CE005FDF81 /* movingTestUITests */,
+				6C97DC1C25B936CB005FDF81 /* FallingGame */,
+				6C97DC3325B936CE005FDF81 /* FallingGameTests */,
+				6C97DC3E25B936CE005FDF81 /* FallingGameUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -358,12 +358,12 @@
 /* Begin PBXTargetDependency section */
 		6C97DC3625B936CE005FDF81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6C97DC1C25B936CB005FDF81 /* movingTest */;
+			target = 6C97DC1C25B936CB005FDF81 /* FallingGame */;
 			targetProxy = 6C97DC3525B936CE005FDF81 /* PBXContainerItemProxy */;
 		};
 		6C97DC4125B936CE005FDF81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6C97DC1C25B936CB005FDF81 /* movingTest */;
+			target = 6C97DC1C25B936CB005FDF81 /* FallingGame */;
 			targetProxy = 6C97DC4025B936CE005FDF81 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -557,7 +557,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/movingTest.app/movingTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FallingGame.app/FallingGame";
 			};
 			name = Debug;
 		};
@@ -579,7 +579,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/movingTest.app/movingTest";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FallingGame.app/FallingGame";
 			};
 			name = Release;
 		};
@@ -626,7 +626,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6C97DC1825B936CB005FDF81 /* Build configuration list for PBXProject "movingTest" */ = {
+		6C97DC1825B936CB005FDF81 /* Build configuration list for PBXProject "FallingGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6C97DC4625B936CE005FDF81 /* Debug */,
@@ -635,7 +635,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6C97DC4825B936CE005FDF81 /* Build configuration list for PBXNativeTarget "movingTest" */ = {
+		6C97DC4825B936CE005FDF81 /* Build configuration list for PBXNativeTarget "FallingGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6C97DC4925B936CE005FDF81 /* Debug */,
@@ -644,7 +644,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6C97DC4B25B936CE005FDF81 /* Build configuration list for PBXNativeTarget "movingTestTests" */ = {
+		6C97DC4B25B936CE005FDF81 /* Build configuration list for PBXNativeTarget "FallingGameTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6C97DC4C25B936CE005FDF81 /* Debug */,
@@ -653,7 +653,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6C97DC4E25B936CE005FDF81 /* Build configuration list for PBXNativeTarget "movingTestUITests" */ = {
+		6C97DC4E25B936CE005FDF81 /* Build configuration list for PBXNativeTarget "FallingGameUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6C97DC4F25B936CE005FDF81 /* Debug */,
